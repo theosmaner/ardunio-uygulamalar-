@@ -5,9 +5,9 @@ Arduino ile bir buton yardımıyla gizli bir Morse kod girerek sistemi açıp ka
 Malzemeler:
 
 -Arduino Uno
--Bir adet buton (push button)
--LED (alarm uyarısı için)
--Buzzer (isteğe bağlı)
+-Bir adet push buton 
+-LED 
+-Buzzer (tercihen kullanabilirsin)
 -220 ohm direnç
 -Breadboard ve kablolar
 
