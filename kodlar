@@ -1,0 +1,41 @@
+#define BUTTON_PIN 2
+#define LED_PIN 13
+
+const String correctCode = ".-.--"; // Örnek Morse şifresi: RY
+String inputCode = "";
+
+unsigned long lastPressTime = 0;
+bool buttonPressed = false;
+
+void setup() {
+  pinMode(BUTTON_PIN, INPUT_PULLUP);
+  pinMode(LED_PIN, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  if (digitalRead(BUTTON_PIN) == LOW) {
+    if (!buttonPressed) {
+      unsigned long pressDuration = millis() - lastPressTime;
+
+      if (pressDuration < 300) {
+        inputCode += "."; // kısa basış
+      } else {
+        inputCode += "-"; // uzun basış
+      }
+
+      lastPressTime = millis();
+      buttonPressed = true;
+      Serial.println(inputCode);
+    }
+  } else {
+    buttonPressed = false;
+  }
+
+ ) // Kod 5 karakter olunca kontrol et
+  if (inputCode.length() == correctCode.length()) {
+    if (inputCode == correctCode) {
+      Serial.println("Giris dogru! Alarm devre disi.");
+      digitalWrite(LED_PIN, LOW);
+    } else {
+      Serial.println("Yanlis kod! Alarm aktif)
